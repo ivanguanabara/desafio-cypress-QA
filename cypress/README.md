@@ -1,136 +1,179 @@
-EBAC Shop E2E Test Suite
-Este repositório contém meus testes end-to-end automatizados para o e-commerce EBAC Shop, utilizando Cypress. Os testes cobrem os principais fluxos de usuário, incluindo criação de conta, login, navegação pelo menu, processo de compra e pesquisa de produtos.
-Desempenho dos Testes
+🛒 EBAC Shop E2E Test Suite
+Este repositório contém os testes End-to-End automatizados da loja online EBAC Shop, utilizando o framework Cypress.
 
-Total de Testes: 19 testes implementados
-Tempo de Execução: Aproximadamente 01:33 (um minuto e trinta e três segundos)
-Eficiência: Os testes automatizados executam em tempo significativamente menor comparado à validação manual desses mesmos fluxos
+Os testes cobrem os principais fluxos de navegação e interação de um usuário comum, como:
 
-A automação destes cenários traz grande eficiência no processo de validação, especialmente em:
+Criação de conta
 
-Testes de regressão: Validação rápida após atualizações de código
-Integração contínua: Execução automática em pipelines de CI/CD
-Feedback rápido: Retorno quase imediato sobre a qualidade da aplicação após mudanças
+Login
 
-Estrutura do Projeto
+Navegação pelo menu
+
+Processo de compra
+
+Pesquisa de produtos
+
+📊 Desempenho dos Testes
+Total de Testes: 19 cenários implementados
+
+Tempo Médio de Execução: 1 minuto e 33 segundos
+
+Eficiência: Validação muito mais rápida que o processo manual
+
+Automatizar esses testes proporciona ganhos significativos em:
+
+✅ Testes de regressão: Validam se novas mudanças quebraram funcionalidades existentes
+
+⚙️ Integração contínua (CI/CD): Execução automática em pipelines
+
+⚡ Feedback rápido: Ajuda a detectar falhas logo após alterações no código
+
+📁 Estrutura do Projeto
+perl
+Copiar
+Editar
 WORKSPACE_ESSENTIALS/
-├── .github/
+├── .github/                # Workflows de CI/CD
 ├── cypress/
-│   ├── downloads/
-│   ├── e2e/
-│   │   └── meta.cy.js
-│   ├── fixtures/
+│   ├── downloads/          # Arquivos baixados durante os testes (ex: PDFs)
+│   ├── e2e/                # Testes end-to-end (inclui meta.cy.js)
+│   ├── fixtures/           # Dados simulados (mock/fake data)
 │   ├── support/
-│   │   └── e2e.js
+│   │   └── e2e.js          # Configurações globais dos testes
 ├── node_modules/
-├── cypress.config.js
+├── cypress.config.js       # Arquivo de configuração principal do Cypress
+├── package.json            # Dependências e scripts do projeto
 ├── package-lock.json
-├── package.json
 └── README.md
-Pré-requisitos
+⚙️ Pré-requisitos
+Certifique-se de ter instalado:
 
-Node.js (v16 ou superior)
-npm (v8 ou superior)
+Node.js (versão 16 ou superior)
 
-Instalação
+npm (versão 8 ou superior)
 
+📦 Instalação
 Clone este repositório:
 
-bashgit clone https://github.com/seu-usuario/ebac-shop-cypress.git
+bash
+Copiar
+Editar
+git clone https://github.com/seu-usuario/ebac-shop-cypress.git
 cd ebac-shop-cypress
-
 Instale as dependências:
 
-bashnpm install
-Como Executar os Testes
-Execução via Interface Gráfica do Cypress
-Para abrir a interface gráfica do Cypress e executar os testes interativamente:
-bashnpm run cypress:open
-Após executar este comando:
+bash
+Copiar
+Editar
+npm install
+🚀 Como Executar os Testes
+🖥️ Via Interface Gráfica (modo interativo)
+Para abrir a interface visual do Cypress:
 
-Será aberta a interface visual do Cypress
-Clique em "E2E Testing" no painel principal
-Selecione seu navegador preferido (Chrome, Firefox, Edge, etc.)
-Clique em "Start E2E Testing in [Navegador]"
-Na nova janela do navegador, clique no arquivo "meta.cy.js" para iniciar os testes
-Você verá a execução em tempo real com detalhes de cada passo
+bash
+Copiar
+Editar
+npm run cypress:open
+Passos:
 
-A interface gráfica é excelente para:
+Clique em "E2E Testing"
+
+Escolha o navegador desejado (Chrome, Firefox, Edge...)
+
+Clique em "Start E2E Testing"
+
+Na nova janela, clique no arquivo meta.cy.js para executar os testes
+
+✅ Ideal para:
 
 Desenvolvimento de novos testes
-Depuração de falhas
-Visualização passo a passo da execução
-Inspeção de elementos na página durante o teste
 
-Execução via Linha de Comando
-Para executar todos os testes em modo headless (sem interface gráfica):
-bashnpm run cypress:run
-Este comando:
+Depuração (debug)
 
-Executa todos os testes automaticamente sem abrir navegador visível
-Mostra os resultados diretamente no terminal
-Gera screenshots para falhas (se configurado)
-É ideal para ambientes de CI/CD e execuções automatizadas
+Visualização detalhada da execução
 
-Para executar especificamente o arquivo meta.cy.js:
-bashnpm run cypress:run -- --spec "cypress/e2e/meta.cy.js"
-Opções adicionais úteis para linha de comando:
-bash# Executar em um navegador específico
+🔧 Via Linha de Comando (modo headless)
+Para executar todos os testes automaticamente sem abrir o navegador:
+
+bash
+Copiar
+Editar
+npm run cypress:run
+✅ Ideal para:
+
+Pipelines de CI/CD
+
+Execuções rápidas e automáticas
+
+Executar apenas um arquivo de teste específico:
+bash
+Copiar
+Editar
+npm run cypress:run -- --spec "cypress/e2e/meta.cy.js"
+Outras opções úteis:
+bash
+Copiar
+Editar
+# Executar em navegador específico
 npm run cypress:run -- --browser chrome
 
 # Executar e gerar vídeos
 npm run cypress:run -- --config video=true
 
-# Executar em modo não-headless (com navegador visível)
+# Executar em modo com navegador visível (headed)
 npm run cypress:run -- --headed
-Sobre o Arquivo meta.cy.js
-O arquivo meta.cy.js contém todos os cenários de teste automatizados para o EBAC Shop. Implementei os seguintes cenários:
-1. Criação de Conta
+🧪 Cenários Testados (meta.cy.js)
+O arquivo meta.cy.js contém os seguintes testes automatizados:
 
-Validação do fluxo de criação de conta
-Validação do fluxo de criação de conta com email já criado
+1. Criação de Conta
+Criação de conta com dados válidos
+
+Criação com e-mail já registrado
 
 2. Login
+Login com credenciais válidas
 
-Validação do fluxo de Login com sucesso
-Validação do fluxo de Login sem email cadastrado
+Login com e-mail não cadastrado
 
-3. Menu
+3. Menu de Navegação
+Página inicial
 
-Validação da página inicial
-Validação do menu HOME
-Validação do menu COMPRAR
-Validação do menu BLOG
-Validação do menu CATEGORIAS
-Validação do menu MAIS VENDIDOS
-Validação do menu "Sanduíche"
+Menu "Home"
+
+Menu "Comprar"
+
+Menu "Blog"
+
+Menu "Categorias"
+
+Menu "Mais Vendidos"
+
+Menu tipo "Sanduíche"
 
 4. Fluxo de Compra
+Pagamento na entrega
 
-Validação do Fluxo de Compra com pagamento na entrega
-Validação do Fluxo de Compra com pagamento de Transferência Bancária
-Validação do Fluxo de Compra com de Cheque
-Validação do Fluxo de Compra com falta de preenchimento correto no campo CEP
-Validação do Fluxo de Compra com falta de preenchimento correto no campo Cidade
+Transferência bancária
 
-5. Pesquisa
+Pagamento com cheque
 
-Validação do fluxo de pesquisa - Augusta Pullover Jacket
-Validação do fluxo de pesquisa - Helena Hooded Fleece
-Validação do fluxo de pesquisa com produto não encontrado
+CEP inválido ou ausente
 
-Importância dos Testes Automatizados
-Estes testes automatizados trazem diversos benefícios:
+Cidade inválida ou ausente
 
-Velocidade de Execução: Em apenas 01:33, validamos 19 fluxos críticos que manualmente levariam muito mais tempo
-Confiabilidade na Regressão: Garante que funcionalidades existentes continuem funcionando após novas implementações
-Redução de Risco: Identifica rapidamente problemas introduzidos por novas atualizações de código
-Agilidade no Desenvolvimento: Permite implementações mais rápidas com feedback imediato sobre a qualidade
+5. Pesquisa de Produtos
+Pesquisa por “Augusta Pullover Jacket”
 
-Especialmente em e-commerce, onde testes manuais frequentes seriam inviáveis pela quantidade de fluxos a serem validados, a automação se torna essencial para manter a qualidade do produto.
-Configurações do Projeto
-cypress.config.js
-javascriptconst { defineConfig } = require('cypress')
+Pesquisa por “Helena Hooded Fleece”
+
+Produto inexistente
+
+🧰 Configurações do Projeto
+🔧 cypress.config.js
+js
+Copiar
+Editar
+const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   e2e: {
@@ -141,73 +184,52 @@ module.exports = defineConfig({
     video: false,
     screenshotOnRunFailure: true,
   },
-})
-Explicação das configurações principais:
+});
+Principais configurações:
 
-baseUrl: URL base do site que estamos testando
-viewportWidth/Height: Dimensões da janela do navegador (ajustar conforme seu monitor)
-defaultCommandTimeout: Tempo máximo de espera para comandos (10s)
-video: Desativado para economizar espaço em disco
-screenshotOnRunFailure: Captura screenshots quando testes falham
+baseUrl: URL da loja EBAC
 
-support/e2e.js
-Este arquivo contém configurações globais para os testes end-to-end, incluindo configurações padrão do Cypress:
-javascript// Arquivo e2e.js básico com configurações padrão do Cypress
-// Você pode adicionar configurações específicas aqui conforme necessário
-Estrutura dos Testes no meta.cy.js
-Meus testes no arquivo meta.cy.js seguem esta estrutura:
-javascript/// <reference types="cypress" />
+viewportWidth / viewportHeight: Tamanho da janela do navegador
 
-describe('Ebac Shop - Criação de Conta', () => {
-  it('Validar fluxo de criação de conta', () => {
-    cy.visit('/minha-conta')
-    // Implementação da verificação da criação de conta
-  })
+defaultCommandTimeout: Tempo de espera padrão (10 segundos)
 
-  it('Validar fluxo de criação de conta com email já criado', () => {
-    cy.visit('/minha-conta')
-    // Implementação da verificação com email já existente
-  })
-})
+video: Desativado para não gerar vídeos (economia de espaço)
 
-describe('Ebac Shop - Login', () => {
-  it('Validar fluxo de Login com sucesso', () => {
-    cy.visit('/minha-conta')
-    // Implementação do login bem-sucedido
-  })
+screenshotOnRunFailure: Tira prints se o teste falhar
 
-  it('Validar fluxo de Login sem email cadastrado', () => {
-    cy.visit('/minha-conta')
-    // Implementação do login com email não cadastrado
-  })
-})
+🛠️ Arquivo support/e2e.js
+js
+Copiar
+Editar
+// Arquivo para configurações globais do Cypress
+// Adicione comandos customizados ou configurações aqui
+🧩 Solução de Problemas Comuns
+📐 Problemas com resolução da tela
+Ajuste viewportWidth e viewportHeight em cypress.config.js
 
-// E assim por diante para os demais cenários de teste...
-Solução de Problemas Comuns
-Ajustes de Viewport
-As configurações de viewportWidth e viewportHeight podem precisar de ajustes dependendo do seu monitor. Se você estiver enfrentando problemas com elementos que não estão visíveis durante os testes, considere:
+Use cy.viewport(1280, 720) em testes específicos
 
-Ajustar as dimensões no arquivo de configuração para corresponder à resolução do seu monitor
-Usar valores menores para garantir compatibilidade com diferentes tamanhos de tela
-Para testes específicos que requerem outras resoluções, você pode usar o comando cy.viewport(width, height) dentro do teste
+⏱️ Timeout em comandos
+Aumente defaultCommandTimeout
 
-Problemas de Timeout
-Se os testes estiverem falhando por timeout, você pode:
+Adicione cy.wait() em pontos críticos
 
-Aumentar o defaultCommandTimeout no arquivo de configuração
-Usar cy.wait() em pontos específicos onde o carregamento é mais lento
-Utilizar o método { timeout: 15000 } em comandos específicos que precisam de mais tempo
+Use { timeout: 15000 } em comandos específicos
 
-Elementos não encontrados
-Se o Cypress não conseguir encontrar elementos na página:
+❌ Elementos não encontrados
+Verifique se os seletores estão corretos e visíveis
 
-Verifique se os seletores estão corretos e únicos
-Use o comando cy.contains() para elementos que podem mudar de posição
-Adicione cy.scrollTo() antes de interagir com elementos que podem estar fora da área visível
+Use cy.contains() quando apropriado
 
-Integração com CI/CD
-Para integrar estes testes em um pipeline de CI/CD, configure seu arquivo de CI (por exemplo, GitHub Actions) assim:
-yamlname: E2E Tests
+Adicione cy.scrollTo() se o elemento estiver fora da tela
+
+🤖 Integração com CI/CD (GitHub Actions)
+Exemplo de configuração para rodar os testes automaticamente:
+
+yaml
+Copiar
+Editar
+name: E2E Tests
 
 on: [push, pull_request]
 
@@ -217,13 +239,95 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      
+
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
           build: npm run build
           start: npm start
+📬 Suporte
+Se você tiver dúvidas ou encontrar algum erro:
 
-          
-Suporte
-Se encontrar algum problema, por favor abra uma issue no repositório ou entre em contato diretamente comigo.
+Abra uma issue neste repositório
+
+Entre em contato diretamente comigo
+
+
+
+************************************************************************************************************
+
+
+# Testes Automatizados com Cypress - API Serverest
+
+Este projeto contém testes automatizados utilizando o framework **Cypress** para validar a API Serverest.
+
+## ✅ Pré-requisitos
+
+Antes de começar, certifique-se de ter os seguintes itens instalados na sua máquina:
+
+- [Node.js](https://nodejs.org/) (recomendado: versão LTS)
+- [Git](https://git-scm.com/) (opcional, caso vá clonar o projeto do GitHub)
+
+## 📦 Instalação do Projeto
+
+1. **Clone este repositório (se necessário)**:
+   ```bash
+   git clone https://github.com/seu-usuario/seu-repositorio.git
+   cd seu-repositorio
+Instale as dependências do projeto:
+
+bash
+Copiar
+Editar
+npm install
+Isso irá instalar o Cypress e outras dependências listadas no package.json.
+
+🚀 Como executar o teste api_serverest
+Você pode rodar os testes de duas formas:
+
+🔧 1. Usando a Linha de Comando (modo headless)
+Execute o seguinte comando:
+
+bash
+Copiar
+Editar
+npx cypress run --spec "cypress/e2e/api_serverest.cy.js"
+💡 Esse comando executa o Cypress em modo headless (sem abrir a interface), ideal para integrações e execução rápida.
+
+🖥️ 2. Usando a Interface Gráfica do Cypress (modo interativo)
+Se quiser ver os testes rodando na tela, faça o seguinte:
+
+bash
+Copiar
+Editar
+npx cypress open
+Depois que a janela do Cypress abrir:
+
+Navegue até a pasta e2e (caso necessário).
+
+Clique no arquivo api_serverest.cy.js para rodar o teste.
+
+🧪 Estrutura do Projeto
+lua
+Copiar
+Editar
+seu-projeto/
+├── cypress/
+│   └── e2e/
+│       └── api_serverest.cy.js  ← Arquivo de testes
+├── cypress.config.js            ← Configuração do Cypress
+├── package.json                 ← Informações e dependências do projeto
+❓ Dúvidas Comuns
+"O que é Cypress?"
+Cypress é uma ferramenta de testes automatizados focada principalmente em testes de front-end e APIs. Ele permite simular interações com sistemas web ou chamadas HTTP.
+
+"Posso rodar os testes em qualquer sistema operacional?"
+Sim! Cypress é compatível com Windows, macOS e Linux.
+
+"Como sei se o teste passou?"
+No terminal ou na interface, você verá mensagens como ✓ indicando sucesso, ou mensagens de erro se algo falhar.
+
+📬 Suporte
+Caso tenha qualquer dúvida, entre em contato com o responsável pelo projeto ou consulte a documentação oficial do Cypress.
+
+GIT https://github.com/ivanguanabara/desafio-cypress-QA
